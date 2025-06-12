@@ -3138,6 +3138,7 @@ __metadata:
     react-dom: "npm:19.0.0"
     react-native: "npm:0.79.1"
     react-native-draggable-flatlist: "npm:^4.0.3"
+    react-native-drax: "npm:^0.11.0-alpha.2"
     react-native-edge-to-edge: "npm:^1.1.3"
     react-native-gesture-handler: "npm:~2.24.0"
     react-native-reanimated: "npm:~3.17.4"
@@ -4535,6 +4536,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.isequal@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.isequal@npm:4.5.0"
+  checksum: 10c0/dfdb2356db19631a4b445d5f37868a095e2402292d59539a987f134a8778c62a2810c2452d11ae9e6dcac71fc9de40a6fedcb20e2952a15b431ad8b29e50e28f
+  languageName: node
+  linkType: hard
+
 "lodash.throttle@npm:^4.1.1":
   version: 4.1.1
   resolution: "lodash.throttle@npm:4.1.1"
@@ -5666,6 +5674,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-drax@npm:^0.11.0-alpha.2":
+  version: 0.11.0-alpha.2
+  resolution: "react-native-drax@npm:0.11.0-alpha.2"
+  dependencies:
+    lodash.isequal: "npm:^4.5.0"
+    lodash.throttle: "npm:^4.1.1"
+    typesafe-actions: "npm:^5.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: ">=0.65.0"
+    react-native-gesture-handler: ">=1.8.0"
+  checksum: 10c0/97061f04257d576b9cdf431840d100cecd28a3b976d26edf34a95b9c6869d93193ff2c2c41bbef5bbb7e0af699320c3ec27cd9522e588e52793e770943356e78
+  languageName: node
+  linkType: hard
+
 "react-native-edge-to-edge@npm:1.6.0":
   version: 1.6.0
   resolution: "react-native-edge-to-edge@npm:1.6.0"
@@ -6641,6 +6664,13 @@ __metadata:
   version: 0.7.1
   resolution: "type-fest@npm:0.7.1"
   checksum: 10c0/ce6b5ef806a76bf08d0daa78d65e61f24d9a0380bd1f1df36ffb61f84d14a0985c3a921923cf4b97831278cb6fa9bf1b89c751df09407e0510b14e8c081e4e0f
+  languageName: node
+  linkType: hard
+
+"typesafe-actions@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "typesafe-actions@npm:5.1.0"
+  checksum: 10c0/64e745aed10abf829b8aad3b178492c5f3602455cb02b7d565aad5560c0ded01dc5db06b12055ebb85fc9fd448d54d3444599eca65b074b48d0c9fb796bbb6a2
   languageName: node
   linkType: hard
 
