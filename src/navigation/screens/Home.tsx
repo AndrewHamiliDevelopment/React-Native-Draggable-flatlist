@@ -1,24 +1,73 @@
-import { Button, Text } from '@react-navigation/elements';
-import { StyleSheet, View } from 'react-native';
+import { Button, Text } from "@react-navigation/elements";
+import { StaticScreenProps } from "@react-navigation/native";
+import React from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import DraggableFlatList from "react-native-draggable-flatlist";
+import { FlatList, GestureHandlerRootView } from "react-native-gesture-handler";
 
-export function Home() {
+interface Product {
+  id: number;
+  name: string;
+}
+
+const generateProducts = (size: number): Product[] => {
+  const products: Product[] = [];
+  for (let i = 0; i < size; i++) {
+    products.push({ id: Math.random(), name: `P ${i}` });
+  }
+  return products;
+};
+
+export const ProductCard = (props: { text: string }) => {
+  const { text } = props;
   return (
-    <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Text>Open up 'src/App.tsx' to start working on your app!</Text>
-      <Button screen="Profile" params={{ user: 'jane' }}>
-        Go to Profile
-      </Button>
-      <Button screen="Settings">Go to Settings</Button>
+    <View>
+      <Text style={{ fontSize: 48 }}>{text}</Text>
     </View>
+  );
+};
+
+export type HomeProps = StaticScreenProps<{ twoColumn: boolean }>;
+
+export function Home(props: HomeProps) {
+  const { route } = props;
+  const { params } = route;
+  const { twoColumn } = params;
+  const [products, setProducts] = React.useState<Product[]>([]);
+
+  React.useEffect(() => {
+    setProducts(generateProducts(15));
+  }, []);
+
+  return (
+    <GestureHandlerRootView>
+      <DraggableFlatList
+        numColumns={twoColumn ? 2 : undefined}
+        data={products}
+        onDragEnd={({ data }) => setProducts(data)}
+        renderItem={({ item, drag, isActive }) => (
+          <TouchableOpacity
+            onLongPress={drag}
+            style={{
+              margin: 48,
+              borderWidth: isActive ? 2 : undefined,
+              borderColor: isActive ? "red" : undefined,
+            }}
+          >
+            <ProductCard text={`${item.name}`} />
+          </TouchableOpacity>
+        )}
+        keyExtractor={(item) => `${item.id}`}
+      />
+    </GestureHandlerRootView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     gap: 10,
   },
 });
